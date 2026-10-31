@@ -1,0 +1,135 @@
+================================================================================
+  DOS Game Cabinet — User Manual (English)
+================================================================================
+
+WHAT IS THIS
+  A Windows launcher for DOS games. It starts games through DOSBox Staging and
+  lets you manage your library, CD images, shaders, CPU cycles, window/fullscreen
+  mode, and per-game key maps.
+
+NOT INCLUDED IN THIS ARCHIVE
+  (1) Any game files (ROMs or full install folders)
+  (2) DOSBox Staging — install it yourself
+  (3) Anyone else's settings (clean RAR omits library.json and mappers)
+
+REQUIREMENTS
+  · Windows 10 or later (64-bit)
+  · This folder includes the .NET runtime; no separate .NET install required
+  · DOSBox Staging must be installed: https://www.dosbox-staging.org/
+
+================================================================================
+1. Which files must stay after extract?
+================================================================================
+
+  Keep the ENTIRE "DosGameLauncher" folder. Do not copy only the .exe.
+  Expect 260+ files (self-contained .NET). Extract and run.
+
+  Core files (do not delete):
+    DosGameLauncher.exe
+    DosGameLauncher.dll
+    DosGameLauncher.deps.json
+    DosGameLauncher.runtimeconfig.json
+    All other .dll files in the same folder
+
+  Advanced: Framework-dependent builds need the four DosGameLauncher.* files
+  plus .NET 9 Desktop Runtime. Most users should use this full folder.
+
+================================================================================
+2. First run
+================================================================================
+
+  1. Install DOSBox Staging if needed.
+  2. Double-click DosGameLauncher.exe.
+  3. The app auto-searches for dosbox.exe; if missing, open Settings and browse
+     to your DOSBox Staging dosbox.exe.
+  4. Click Add Game, or drag-and-drop .exe / .bat / .com into the window.
+
+  Tip: Prefer PLAY.BAT when present; the launcher resolves it to the main .exe.
+       Do not use helper modules (e.g. RPG.EXE) as the main entry.
+
+================================================================================
+3. Main features
+================================================================================
+
+  · Play: select a game → Start, or double-click the list entry.
+  · Fullscreen/window, shaders (including no filter), vsync options.
+  · Speed: auto / slow / max / custom cycles (often 8000–15000 per game).
+  · Per-game key maps; Ctrl+F1 in-game opens DOSBox Staging's mapper.
+  · Open folder, change executable, remove from list (does not delete game files).
+
+================================================================================
+4. CD images (multi-disc games)
+================================================================================
+
+  In the right panel:
+    Disc 1 (mounted as D:)  — required when the game needs a CD
+    Disc 2 (optional)       — set both for two-disc games (.cue / .iso)
+
+  On Start, the launcher mounts disc 1 (and disc 2 if set) on the same D: drive.
+  This simulates one physical drive and disc swapping—not reading two discs at once.
+
+  When the game asks to change discs during play:
+    · Click the DOSBox game window and press Ctrl+F4 to cycle mounted images.
+    · Wait a few seconds after each swap, then follow on-screen prompts (Space or Enter).
+    · Do not hammer Ctrl+F4.
+
+  Prefer .cue when both .cue and .iso exist.
+  Use the correct main executable for your copy (e.g. some installs use SHK3_.EXE
+  instead of SHK3.EXE).
+
+================================================================================
+5. Where settings are stored
+================================================================================
+
+  Next to DosGameLauncher.exe:
+    library.json      Game list, DOSBox path, CD paths, window size, etc.
+    mappers\*.map     Per-game key maps
+
+  Settings are read/written only in the folder containing the .exe you run.
+  Data is NOT imported from %AppData% automatically.
+
+  To share a clean copy: delete library.json and mappers before packing the archive.
+
+  Each copy of DosGameLauncher in a different folder has its own library.json.
+
+================================================================================
+6. FAQ
+================================================================================
+
+  Q: Game window flashes and closes?
+  A: Use the main .exe or PLAY.BAT; check DOSBox path in Settings; ensure the
+     game folder is complete.
+
+  Q: Z:\> Illegal command?
+  A: Start the game from this launcher; do not run paths manually at the Z: prompt.
+
+  Q: DOSBox not found?
+  A: Install DOSBox Staging and set dosbox.exe in Settings, or place it in a
+     "DOSBox Staging" subfolder next to the launcher.
+
+  Q: Game asks for a CD swap; Enter does nothing?
+  A: Press Ctrl+F4 in the DOSBox window, wait a few seconds; some games want Space.
+
+  Q: Deleted library.json but still see my old list?
+  A: Run the .exe from the folder where you deleted library.json.
+
+================================================================================
+7. Common DOSBox hotkeys (in-game)
+================================================================================
+
+  Ctrl+F4   Cycle CD images (multi-disc games)
+  Ctrl+F1   Key mapper (remember Save)
+  Ctrl+F9   Quit DOSBox
+  Ctrl+F10  Release mouse capture
+  Alt+Enter Toggle fullscreen/windowed
+
+================================================================================
+8. License and third parties
+================================================================================
+
+  This launcher is provided as-is. Game copyrights belong to their publishers.
+  DOSBox Staging is separate software; follow its license.
+
+  Version: 2026-10-30  ·  Runtime: .NET 9 Windows (self-contained x64)
+
+================================================================================
